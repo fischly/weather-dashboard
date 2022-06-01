@@ -1,28 +1,29 @@
 <script>
-
+// @ts-nocheck
 	import { onMount, tick } from 'svelte'
-	
+    import { myVar, inc, start, addCallback } from '../websocket-manager/WebSocketManager';
+
+    function daCb(v) {
+        console.log('FROM COMPONENT: ', v);
+
+        document.querySelector('#kekw').value = 'penis ' + v;
+    }
 	
 	onMount(async () => {
         console.log(jQuery);
-
-        jQuery('#example').DataTable()
-		// load().then(rows => {
-		// 	table.rows.add(rows).draw()
-		// })
-	})
+        console.log(myVar);
+        start();
+        addCallback(daCb);
 
 
+        jQuery('#example').DataTable({
+            paging: false,
+            searching: false
+        });
+	});
 </script>
 
-<svelte:head>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" />
-
-    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script defer src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
-</svelte:head>
-
-<input type="button" value="penis" >
+<input hidden id="kekw" type="button" value="" on:click="{() => inc()}"/>
 
 <table id="example" class="display" style="width:100%" >
     <thead>
@@ -34,124 +35,19 @@
     </thead>
     <tbody>
         <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
+            <td>Test Temp Sensor</td>
+            <td>21.5 °C</td>
+            <td>28.05.2022 18:39:27</td>
         </tr>
         <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
+            <td>Test Humidity Sensor</td>
+            <td>58%</td>
+            <td>28.05.2022 18:38:57</td>
         </tr>
         <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
-        </tr>
-        <tr>
-            <td>Penis</td>
-            <td>Penis</td>
-            <td>Penis</td>
+            <td>Test Pressure Sensor</td>
+            <td>1014 mBar</td>
+            <td>28.05.2022 17:23:12</td>
         </tr>
     </tbody>
 </table>

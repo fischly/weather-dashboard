@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import Counter from '$lib/Counter.svelte';
+	import TemperatureChart from '$lib/charts/TemperatureChart.svelte';
 </script>
 
 <svelte:head>
@@ -12,22 +12,10 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
+	<h1>Weatherstation Dashboard</h1>
 
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
+	<!-- <SensorTable /> -->
+	<TemperatureChart />
 </section>
 
 <style>
@@ -41,20 +29,11 @@
 
 	h1 {
 		width: 100%;
+		margin: 0.8rem 0px;
+	}
+	h2 {
+		font-size: 2em;
+		margin: 0.8rem 0px 1.6rem 0px;
 	}
 
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
 </style>
