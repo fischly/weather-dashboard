@@ -57,6 +57,11 @@
                             // Luxon format string
                             // tooltipFormat: ''
                         },
+                        adapters: {
+                            date: {
+                                locale: 'de'
+                            }
+                        },
                         title: {
                             display: true,
                             text: 'Date',
