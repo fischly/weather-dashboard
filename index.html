@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weatherstation Dashboard</title>
+
+    <!-- extern dependencies -->
+    <link rel="stylesheet" href="libs/css/jquery.dataTables.min.css">
+
+    <!-- <link rel="stylesheet" href="libs/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-theme.min.css"> -->
+
+    <script src="libs/js/jquery.min.js"></script>
+    <script src="libs/js/jquery.dataTables.min.js"></script>
+
+    <!-- own files -->
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div class="fancy-background"></div>
+    <div class="container">
+        <h1>Weatherstation Dashboard v0.8.2</h1>
+        <h3>
+            Lorem ipsum dolor sit amet.
+            <span style="float:right;">Last update: <span id="lastTimestamp"></span></span>
+        </h3>
+
+        <!-- <h4>
+            <input type="checkbox" id="checkBoxHideDone" name="checkBoxHideDone">
+            <label for="checkBoxHideDone">Lorem ipsum</label>
+
+            <span style="float:right"><a href="/data">JSON-Endpunkt</a> für maschinelles Lesen</span>
+        </h4> -->
+
+        <table> <!-- data-order='[[ 4, "desc" ]]'> -->
+            <thead>
+                <tr>
+                    <th scope="col">Sensor Name</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Device</th>
+                    <th scope="col">Last Measurement</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+        </table>
+    </div>
+
+    <!-- <hr> -->
+
+    <div class="footer container" style="text-align:center;">
+        <a href="https://github.com/fischly/weather-dashboard">
+            <div class="github-link">
+                <img src="icons/github.svg">
+                Dashboard
+            </div>
+        </a>
+        <a href="https://github.com/fischly/sensor-reader-mqtt">
+            <div class="github-link">
+                <img src="icons/github.svg">
+                Sensors
+            </div>
+        </a>
+        <a href="https://github.com/fischly/nodejs-mqtt-to-db-logger">
+            <div class="github-link">
+                <img src="icons/github.svg">
+                Backend
+            </div>
+        </a>
+    </div>
+</body>
+</html>

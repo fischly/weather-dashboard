@@ -1,0 +1,136 @@
+/* body and background */
+body {
+    background-color: #22272e;
+}
+
+a {
+    color: #417cc7; /* #539bf5 */
+    text-decoration: none;
+    font-family: 'Lato-Bold', sans-serif;
+
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+div.fancy-background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    width: 100%;
+    height: 265px;
+
+    /* background: linear-gradient(to right, #3a7fd5, #6ebce2); */
+    /* background: linear-gradient(90deg, rgba(0,153,181,1) 0%, rgba(27,194,218,1) 35%, rgba(141,233,255,1) 100%); */
+    background: linear-gradient(90deg, #2d333b 0%, #313943 35%, #363d47 100%);
+
+    box-shadow: inset 0 -3px 10px rgb(0 0 0 / 10%);
+
+    transform: skew(0, -1.5deg);
+    transform-origin: bottom left;
+
+    z-index: -10;
+}
+
+
+/* main content container */
+div.container {
+    margin: 0 auto;
+    max-width: 900px;
+
+    /* border: 1px solid black; */
+
+    z-index: 10;
+}
+
+div.container h1,
+div.container h4,
+div.container h3 {
+    font-family: 'Lato-Bold', sans-serif;
+    color: #adbac7;
+}
+div.container h1,
+div.container h1 a {
+    color: #adbac7;
+    /* -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;  */
+}
+
+div.container h1 a {
+    text-decoration-color: #1d4558;
+}
+
+div.container h4 {
+    margin-bottom: 5px;
+}
+
+div.container p {
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
+div.footer {
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+div.footer div {
+    /* border: 1px solid red; */
+}
+
+div.github-link {
+    display: flex;
+    align-items: center;
+
+    margin: 5px 20px;
+}
+
+div.github-link img {
+    margin-right: 8px;
+
+    width: 24px;
+}
+
+
+/* basic table */
+table {
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
+thead {
+    font-family: 'Lato-Bold', sans-serif;
+    text-align: left;
+    background-color: #22272e;
+    color: #e2e9ef;
+}
+
+table.dataTable tbody tr {
+    background-color: #22272e;
+    color: #adbac7;
+}
+
+td.td-done,
+td.td-votes {
+    text-align: center;
+}
+
+
+
+/* data tables */
+#DataTables_Table_0_wrapper {
+    background-color: #818181; /* #3d8aaf; */
+    border-radius: 12px;
+    padding: 7px 9px;
+
+    font-family: 'Roboto-Medium', sans-serif;
+}
+
+.dataTables_length label,
+.dataTables_filter label {
+    color: #adbac7;
+}
