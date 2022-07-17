@@ -1,0 +1,27 @@
+
+
+
+.col-sensor {
+    flex-grow: 3;
+    min-width: 170px;
+}
+
+.col-steps {
+    min-width: 70px;
+}
+
+hr {
+    border-top: 2px solid rgba(255,255,255,.25);
+}
+
+.form-bordered {
+    /* border: 2px solid #797979; */
+    border: 2px solid rgba(255,255,255,.25);
+    padding: 6px 9px 0px 9px;
+
+    border-radius: 0.25em;
+}
+
+.form-group {
+    margin-bottom: 0.6em;
+}

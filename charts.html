@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weatherstation Dashboard - Charts</title>
+
+    <!-- extern dependencies -->
+    <link rel="stylesheet" href="libs/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="libs/css/bootstrap-dark.min.css">
+
+
+    <script src="libs/js/jquery.min.js"></script>
+    <script src="libs/js/jquery.dataTables.min.js"></script>
+
+    <script src="libs/js/chart.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/luxon@^2"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@^1"></script>
+
+    <!-- own files -->
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="charts.css">
+
+    <script src="charts.js" defer></script>
+</head>
+
+<body>
+    <div class="fancy-background"></div>
+    <div class="container">
+        <h1>Weatherstation Dashboard v0.8.2</h1>
+        <h3>
+            Lorem ipsum dolor sit amet.
+            <span style="float:right;">Last update: <span id="lastTimestamp"></span></span>
+        </h3>
+
+        <!-- <h4>
+            <input type="checkbox" id="checkBoxHideDone" name="checkBoxHideDone">
+            <label for="checkBoxHideDone">Lorem ipsum</label>
+
+            <span style="float:right"><a href="/data">JSON-Endpunkt</a> für maschinelles Lesen</span>
+        </h4> -->
+        <!-- <div id="lettersearch-container">
+            <p>Sortierbuchstabe</p>
+            <ul id="lettersearch-list">
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-all" class="sr-only" value="" onclick="updateFilter()" checked><label for="lettersearch-all" class="">Alle</label><div aria-hidden="true" class="filter-active"></div></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-A" class="sr-only" value="a" onclick="updateFilter()"><label for="lettersearch-A">A</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-B" class="sr-only" value="b" onclick="updateFilter()"><label for="lettersearch-B">B</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-C" class="sr-only" value="c" onclick="updateFilter()"><label for="lettersearch-C">C</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-D" class="sr-only" value="d" onclick="updateFilter()"><label for="lettersearch-D">D</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-E" class="sr-only" value="e" onclick="updateFilter()"><label for="lettersearch-E">E</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-F" class="sr-only" value="f" onclick="updateFilter()"><label for="lettersearch-F">F</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-G" class="sr-only" value="g" onclick="updateFilter()"><label for="lettersearch-G">G</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-H" class="sr-only" value="h" onclick="updateFilter()"><label for="lettersearch-H">H</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-I" class="sr-only" value="i" onclick="updateFilter()"><label for="lettersearch-I">I</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-J" class="sr-only" value="j" onclick="updateFilter()"><label for="lettersearch-J">J</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-K" class="sr-only" value="k" onclick="updateFilter()"><label for="lettersearch-K">K</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-L" class="sr-only" value="l" onclick="updateFilter()"><label for="lettersearch-L">L</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-M" class="sr-only" value="m" onclick="updateFilter()"><label for="lettersearch-M">M</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-N" class="sr-only" value="n" onclick="updateFilter()"><label for="lettersearch-N">N</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-O" class="sr-only" value="o" onclick="updateFilter()"><label for="lettersearch-O">O</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-P" class="sr-only" value="p" onclick="updateFilter()"><label for="lettersearch-P">P</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-Q" class="sr-only" value="q" onclick="updateFilter()"><label for="lettersearch-Q">Q</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-R" class="sr-only" value="r" onclick="updateFilter()"><label for="lettersearch-R">R</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-S" class="sr-only" value="s" onclick="updateFilter()"><label for="lettersearch-S">S</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-T" class="sr-only" value="t" onclick="updateFilter()"><label for="lettersearch-T">T</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-U" class="sr-only" value="u" onclick="updateFilter()"><label for="lettersearch-U">U</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-V" class="sr-only" value="v" onclick="updateFilter()"><label for="lettersearch-V">V</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-W" class="sr-only" value="w" onclick="updateFilter()"><label for="lettersearch-W">W</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-X" class="sr-only" value="x" onclick="updateFilter()"><label for="lettersearch-X">X</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-Y" class="sr-only" value="y" onclick="updateFilter()"><label for="lettersearch-Y">Y</label></li>
+                <li class="lettersearch-item"><input type="radio" name="filter1" id="lettersearch-Z" class="sr-only" value="z" onclick="updateFilter()"><label for="lettersearch-Z">Z</label></li>
+            </ul>
+        </div> -->
+
+        <form class="form-bordered">
+            <div class="form-group">
+            
+                <div class="row">
+                    <div class="col col-sensor">
+                        <label for="selectedSensor">Sensor</label>
+                        <select id="selectedSensor" class="form-select form-control" aria-label=""></select>
+                    </div>
+                    <div class="col col-range">
+                        <label for="startRange">Start</label>
+                        <input id="startRange" class="form-control" type="datetime-local">
+                    </div>
+                    <div class="col col-range">
+                        <label for="endRange">End</label>
+                        <input id="endRange" class="form-control" type="datetime-local">
+                    </div>
+                    <div class="col col-steps">
+                        <label for="stepsRange">Step</label>
+                        <input id="stepsRange" class="form-control" type="number" value="10" min="1" max="500">
+                    </div>
+                    <div class="col col-button">
+                        <label for="updateButton">-</label>
+                        <button id="updateButton" type="button" class="btn btn-light form-control">Load</button>
+                    </div>
+                </div>
+
+                <hr>
+
+
+                <div class="row">
+                    <div class="col">
+                        <label for="preset-1">Presets</label>
+                        <button id="preset-1" type="button"
+                                class="btn btn-light form-control"
+                                onclick="updateDatepicker(1000*60*10)">
+                            10min
+                        </button>
+                    </div>
+                    <div class="col">
+                        <label for="preset-1">‎</label>
+                        <button id="preset-1" type="button"
+                                class="btn btn-light form-control"
+                                onclick="updateDatepicker(1000*60*60)">
+                            1h
+                        </button>
+                    </div>
+                    <div class="col">
+                        <label for="preset-1">‎</label>
+                        <button id="preset-1" type="button"
+                                class="btn btn-light form-control"
+                                onclick="updateDatepicker(1000*60*60*24)">
+                            1d
+                        </button>
+                    </div>
+                    <div class="col">
+                        <label for="preset-1">‎</label>
+                        <button id="preset-1" type="button"
+                                class="btn btn-light form-control"
+                                onclick="updateDatepicker(1000*60*60*24*7)">
+                            1w
+                        </button>
+                    </div>
+                    <div class="col">
+                        <label for="preset-1">‎</label>
+                        <button id="preset-1" type="button"
+                                class="btn btn-light form-control"
+                                onclick="updateDatepicker(1000*60*60*24*30)">
+                            1mo
+                        </button>
+                    </div>
+                    <div class="col">
+                        <label for="preset-1">‎</label>
+                        <button id="preset-1" type="button"
+                                class="btn btn-light form-control"
+                                onclick="updateDatepicker(1000*60*60*24*365)">
+                            1y
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+
+        <!-- <form class="form-bordered">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col col-sensor">
+                        <button id="updateButton" type="button" class="btn btn-light form-control">Load</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </form> -->
+
+        <div class="chart temp-chart" style="border: 1px solid green;">
+            <canvas id="temp-canvas"></canvas>
+        </div>
+        <div class="" style="border: 1px solid blue;">
+
+        </div>
+    </div>
+
+    <!-- <hr> -->
+
+    <div class="footer container" style="text-align:center;">
+        <a href="https://github.com/fischly/weather-dashboard">
+            <div class="github-link">
+                <img src="icons/github.svg">
+                Dashboard
+            </div>
+        </a>
+        <a href="https://github.com/fischly/sensor-reader-mqtt">
+            <div class="github-link">
+                <img src="icons/github.svg">
+                Sensors
+            </div>
+        </a>
+        <a href="https://github.com/fischly/nodejs-mqtt-to-db-logger">
+            <div class="github-link">
+                <img src="icons/github.svg">
+                Backend
+            </div>
+        </a>
+    </div>
+</body>
+
+</html>
