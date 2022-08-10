@@ -4,7 +4,22 @@
 const ctx = document.getElementById('temp-canvas').getContext('2d');
 let myChart = null;
 
-fetch('data/measurements/Pressure?steps=200')
+fetch('data/sensors')
+.then(resp => resp.json())
+.then(sensors => {
+    sensors.forEach(sensor => {
+        console.log(sensor);
+        let opt = document.createElement('option');
+        opt.innerText = `${sensor.name} (${sensor.device})`;
+        opt.dataset.sensorName = sensor.name;
+        opt.dataset.device = sensor.device;
+
+        document.querySelector('#selectedSensor').appendChild(opt);
+    });
+});
+
+
+fetch('data/measurements/Pressure/BMP280?steps=200')
 .then(resp => resp.json())
 .then(json => {
     let data = {};
@@ -98,7 +113,9 @@ function updateDatepicker(range) {
 
 $('#updateButton').click(function () {
     // read out field values
-    const sensor = 'Pressure';
+    const selectedSensorOption = document.querySelector('#selectedSensor').selectedOptions[0];
+    const sensor = selectedSensorOption.dataset.sensorName;
+    const device = selectedSensorOption.dataset.device;
     const startRange = new Date(document.querySelector('#startRange').value).getTime();
     const endRange = new Date(document.querySelector('#endRange').value).getTime();
     const steps = document.querySelector('#stepsRange').value;
@@ -106,7 +123,7 @@ $('#updateButton').click(function () {
     console.log('updateButton clicked, sensor = ', sensor, ' startRange = ', startRange, ' endRange = ', endRange, ' steps = ', steps);
 
     // update the chart values
-    fetch(`data/measurements/${sensor}?start=${startRange}&end=${endRange}&steps=${steps}`)
+    fetch(`data/measurements/${sensor}/${device}?start=${startRange}&end=${endRange}&steps=${steps}`)
     .then(resp => resp.json())
     .then(json => {
         let data = {};
