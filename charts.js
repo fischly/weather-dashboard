@@ -99,7 +99,7 @@ function formatToDatepicker(date) {
     return date.toISOString().slice(0, -5);
 }
 
-function updateDatepicker(range) {
+function updateDatepicker(range, steps) {
     let date = new Date();
     date.setHours(date.getHours()+2); // TODO: fix timezone problem (current datetimepicker only supports UTC)
 
@@ -108,6 +108,9 @@ function updateDatepicker(range) {
 
     // set the start date according to the selected range
     document.querySelector('#startRange').value = formatToDatepicker(new Date(date.getTime() - range));
+
+    // update steps
+    document.querySelector('#stepsRange').value = steps;
 }
 
 
