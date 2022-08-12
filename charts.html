@@ -32,8 +32,12 @@
     <div class="container">
         <h1>Weatherstation Dashboard v0.8.2</h1>
         <h3>
-            Lorem ipsum dolor sit amet.
-            <span style="float:right;">Last update: <span id="lastTimestamp"></span></span>
+            <nav>
+                <ul class="menu">
+                    <li class="item"><a href="index.html"><img src="icons/list-ul.svg" class="nav-icon" alt=""/>Sensors</a></li>
+                    <li class="item item-active"><a href="charts.html"><img src="icons/chart-line.svg" class="nav-icon" alt=""/>Charts</a></li>
+                </ul>
+            </nav>
         </h3>
 
         <!-- <h4>
@@ -75,7 +79,7 @@
             </ul>
         </div> -->
 
-        <form class="form-bordered">
+        <form class="form-bordered bordered">
             <div class="form-group">
             
                 <div class="row">
@@ -97,7 +101,7 @@
                     </div>
                     <div class="col col-button">
                         <label for="updateButton">-</label>
-                        <button id="updateButton" type="button" class="btn btn-light form-control">Load</button>
+                        <button id="updateButton" type="button" class="btn btn-preset form-control">Load</button>
                     </div>
                 </div>
 
@@ -108,7 +112,7 @@
                     <div class="col">
                         <label for="preset-1">Presets</label>
                         <button id="preset-1" type="button"
-                                class="btn btn-light form-control"
+                                class="btn btn-preset form-control"
                                 onclick="updateDatepicker(1000*60*60, 1)">
                             1h
                         </button>
@@ -116,7 +120,7 @@
                     <div class="col">
                         <label for="preset-2">‎</label>
                         <button id="preset-2" type="button"
-                                class="btn btn-light form-control"
+                                class="btn btn-preset form-control"
                                 onclick="updateDatepicker(1000*60*60*24, 8)">
                             1d
                         </button>
@@ -124,7 +128,7 @@
                     <div class="col">
                         <label for="preset-3">‎</label>
                         <button id="preset-3" type="button"
-                                class="btn btn-light form-control"
+                                class="btn btn-preset form-control"
                                 onclick="updateDatepicker(1000*60*60*24*7, 50)">
                             1w
                         </button>
@@ -132,7 +136,7 @@
                     <div class="col">
                         <label for="preset-4">‎</label>
                         <button id="preset-4" type="button"
-                                class="btn btn-light form-control"
+                                class="btn btn-preset form-control"
                                 onclick="updateDatepicker(1000*60*60*24*30, 200)">
                             1mo
                         </button>
@@ -140,7 +144,7 @@
                     <div class="col">
                         <label for="preset-5">‎</label>
                         <button id="preset-5" type="button"
-                                class="btn btn-light form-control"
+                                class="btn btn-preset form-control"
                                 onclick="updateDatepicker(1000*60*60*24*365, 2400)">
                             1y
                         </button>
@@ -161,7 +165,7 @@
             </div>
         </form> -->
 
-        <div class="chart temp-chart" style="border: 2px solid rgba(255,255,255,.25);">
+        <div class="chart temp-chart bordered">
             <canvas id="temp-canvas"></canvas>
         </div>
         <div class="" style="border: 1px solid rgba(255,255,255,.25);">

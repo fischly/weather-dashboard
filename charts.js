@@ -2,7 +2,59 @@
 
 
 const ctx = document.getElementById('temp-canvas').getContext('2d');
-let myChart = null;
+let myChart = new Chart(ctx, {
+    type: 'line',
+    data: {},
+    options: {
+        plugins: {
+            title: {
+                text: 'Temperature chart',
+                display: true
+            }
+        },
+        legend: {
+            labels: {
+                fontColor: '#ff0000'
+            }
+        },
+        scales: {
+            x: {
+                type: 'time',
+                time: {
+                    // Luxon format string
+                    // tooltipFormat: ''
+                },
+                adapters: {
+                    date: {
+                        // locale: 'de'
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Date',
+                },
+                ticks: {
+                    color: '#cdd9e5'
+                },
+                grid: {
+                    color: '#484848'
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Temp in °C'
+                },
+                ticks: {
+                    color: '#cdd9e5'
+                },
+                grid: {
+                    color: '#484848'
+                }
+            }
+        },
+    },
+});
 
 fetch('data/sensors')
 .then(resp => resp.json())
@@ -16,83 +68,92 @@ fetch('data/sensors')
 
         document.querySelector('#selectedSensor').appendChild(opt);
     });
+
+    document.querySelector('#selectedSensor').selectedIndex = 3;
 });
 
+updateDatepicker(1000*60*60*24, 8);
+fetchAndUpdateChart('Temperature', 'SHTC3', 
+    new Date(document.querySelector('#startRange').value).getTime(),
+    new Date(document.querySelector('#endRange').value).getTime(),
+    document.querySelector('#stepsRange').value
+);
 
-fetch('data/measurements/Pressure/BMP280?steps=200')
-.then(resp => resp.json())
-.then(json => {
-    let data = {};
-    data.labels = [];
 
-    data.datasets = [];
-    let dataset = { label: 'TestSensor x', backgroundColor: '#ff0000', borderColor: '#aa1111', data: []};
+// fetch('data/measurements/Pressure/BMP280?steps=200')
+// .then(resp => resp.json())
+// .then(json => {
+//     let data = {};
+//     data.labels = [];
 
-    for (const measurement of json) {
-        // add axis label
-        data.labels.push(new Date(measurement.sendTime));
+//     data.datasets = [];
+//     let dataset = { label: 'TestSensor x', backgroundColor: '#ff0000', borderColor: '#aa1111', data: []};
 
-        // add measurement
-        dataset.data.push(measurement.value);
-    }
+//     for (const measurement of json) {
+//         // add axis label
+//         data.labels.push(new Date(measurement.sendTime));
 
-    data.datasets.push(dataset);
+//         // add measurement
+//         dataset.data.push(measurement.value);
+//     }
 
-    myChart = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: {
-            plugins: {
-                title: {
-                    text: 'Temperature chart',
-                    display: true
-                }
-            },
-            legend: {
-                labels: {
-                    fontColor: '#ff0000'
-                }
-            },
-            scales: {
-                x: {
-                    type: 'time',
-                    time: {
-                        // Luxon format string
-                        // tooltipFormat: ''
-                    },
-                    adapters: {
-                        date: {
-                            locale: 'de'
-                        }
-                    },
-                    title: {
-                        display: true,
-                        text: 'Date',
-                    },
-                    ticks: {
-                        color: '#cdd9e5'
-                    },
-                    grid: {
-                        color: '#484848'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Temp in °C'
-                    },
-                    ticks: {
-                        color: '#cdd9e5'
-                    },
-                    grid: {
-                        color: '#484848'
-                    }
-                }
-            },
-        },
-    });
+//     data.datasets.push(dataset);
 
-});
+//     myChart = new Chart(ctx, {
+//         type: 'line',
+//         data: data,
+//         options: {
+//             plugins: {
+//                 title: {
+//                     text: 'Temperature chart',
+//                     display: true
+//                 }
+//             },
+//             legend: {
+//                 labels: {
+//                     fontColor: '#ff0000'
+//                 }
+//             },
+//             scales: {
+//                 x: {
+//                     type: 'time',
+//                     time: {
+//                         // Luxon format string
+//                         // tooltipFormat: ''
+//                     },
+//                     adapters: {
+//                         date: {
+//                             locale: 'de'
+//                         }
+//                     },
+//                     title: {
+//                         display: true,
+//                         text: 'Date',
+//                     },
+//                     ticks: {
+//                         color: '#cdd9e5'
+//                     },
+//                     grid: {
+//                         color: '#484848'
+//                     }
+//                 },
+//                 y: {
+//                     title: {
+//                         display: true,
+//                         text: 'Temp in °C'
+//                     },
+//                     ticks: {
+//                         color: '#cdd9e5'
+//                     },
+//                     grid: {
+//                         color: '#484848'
+//                     }
+//                 }
+//             },
+//         },
+//     });
+
+// });
 
 
 function formatToDatepicker(date) {
@@ -113,18 +174,7 @@ function updateDatepicker(range, steps) {
     document.querySelector('#stepsRange').value = steps;
 }
 
-
-$('#updateButton').click(function () {
-    // read out field values
-    const selectedSensorOption = document.querySelector('#selectedSensor').selectedOptions[0];
-    const sensor = selectedSensorOption.dataset.sensorName;
-    const device = selectedSensorOption.dataset.device;
-    const startRange = new Date(document.querySelector('#startRange').value).getTime();
-    const endRange = new Date(document.querySelector('#endRange').value).getTime();
-    const steps = document.querySelector('#stepsRange').value;
-
-    console.log('updateButton clicked, sensor = ', sensor, ' startRange = ', startRange, ' endRange = ', endRange, ' steps = ', steps);
-
+function fetchAndUpdateChart(sensor, device, startRange, endRange, steps) {
     // update the chart values
     fetch(`data/measurements/${sensor}/${device}?start=${startRange}&end=${endRange}&steps=${steps}`)
     .then(resp => resp.json())
@@ -149,5 +199,19 @@ $('#updateButton').click(function () {
         myChart.update();
 
     });
+}
 
+
+$('#updateButton').click(function () {
+    // read out field values
+    const selectedSensorOption = document.querySelector('#selectedSensor').selectedOptions[0];
+    const sensor = selectedSensorOption.dataset.sensorName;
+    const device = selectedSensorOption.dataset.device;
+    const startRange = new Date(document.querySelector('#startRange').value).getTime();
+    const endRange = new Date(document.querySelector('#endRange').value).getTime();
+    const steps = document.querySelector('#stepsRange').value;
+
+    console.log('updateButton clicked, sensor = ', sensor, ' startRange = ', startRange, ' endRange = ', endRange, ' steps = ', steps);
+
+    fetchAndUpdateChart(sensor, device, startRange, endRange, steps);
 });

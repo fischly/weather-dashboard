@@ -11,17 +11,30 @@
 }
 
 hr {
-    border-top: 2px solid rgba(255,255,255,.25);
+    border-top: 2px solid #818181;
+}
+
+.bordered {
+    border: 7px solid #818181;
+    border-radius: 12px;
+
+    background-color: #22272e;
+}
+
+.temp-chart {
+    margin-top: -7px;
 }
 
 .form-bordered {
     /* border: 2px solid #797979; */
-    border: 2px solid rgba(255,255,255,.25);
     padding: 6px 9px 0px 9px;
-
-    border-radius: 0.25em;
 }
 
 .form-group {
     margin-bottom: 0.6em;
+}
+
+.btn-preset {
+    color: #ffffff;
+    border-color: #f8f9fa;
 }

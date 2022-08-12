@@ -105,3 +105,61 @@ div.github-link img {
 
     width: 24px;
 }
+
+
+/* ===== navbar ===== */
+
+.nav-icon {
+    width: 26px;
+    padding: 3px;
+
+    margin: 0px 3px 3px 0px;
+
+    /* opacity: 0.4; */
+    /* color: #006ab4; */
+}
+
+nav > ul { 
+    padding: 0px !important;
+    list-style-type: none; 
+} 
+
+nav > ul > li > a { 
+    font-weight: 700;
+	font-family: 'Lato-Bold', sans-serif;
+    font-size: 1.12em;
+    
+    text-decoration: none;
+
+    /* color: #adbac7; */
+    /* font-variant: all-petite-caps; */
+}
+
+nav a:hover { 
+    text-decoration: underline; 
+} 
+
+.menu { 
+    display: flex; 
+    flex-wrap: nowrap; 
+    justify-content: flex-start; 
+    align-items: center;
+
+    margin: auto;
+
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.item { 
+    text-align: center; 
+    /* display: block;  */
+
+    margin-right: 25px;
+} 
+
+.item.item-active a {
+    color: #adbac7;
+
+    text-decoration: underline #006ab4;
+}
