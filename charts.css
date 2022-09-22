@@ -15,14 +15,15 @@ hr {
 }
 
 .bordered {
-    border: 7px solid #818181;
+    border: 6px solid #adbac759;
     border-radius: 12px;
 
     background-color: #22272e;
+    box-shadow: 3px 2px 9px 5px #00000045;
 }
 
 .temp-chart {
-    margin-top: -7px;
+    margin-top: 22px;
 }
 
 .form-bordered {

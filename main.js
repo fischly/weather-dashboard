@@ -1,14 +1,3 @@
-$.fn.dataTable.ext.search.push(
-    function (settings, data, dataIndex) {
-        const done = data[0] == '✅';
-        
-        if ($('#checkBoxHideDone').is(':checked')) {
-            return !done;
-        } else {
-            return true;
-        }
-    }
-);
 
 $(document).ready(function () {
     const tbody = document.querySelector('table tbody');
@@ -29,7 +18,7 @@ $(document).ready(function () {
         lastMeasurementTd.className = 'td-lastMeasurement';
 
         nameTd.innerText = data.name;
-        valueTd.innerText = data.lastValue;
+        valueTd.innerText = data.lastValue.toFixed(2);
         unitTd.innerText = data.unit;
         deviceTd.innerText = data.device;
         lastMeasurementTd.innerText = new Date(data.lastMeasurement).toLocaleString(undefined, { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' });

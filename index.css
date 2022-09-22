@@ -28,9 +28,10 @@ td.td-votes {
 
 /* data tables */
 #DataTables_Table_0_wrapper {
-    background-color: #818181; /* #3d8aaf; */
+    background-color: #525a63; /* #3d8aaf; */
+    box-shadow: 3px 2px 9px 5px #00000045;
     border-radius: 12px;
-    padding: 7px 9px;
+    padding: 6px 7px;
 
     font-family: 'Roboto-Medium', sans-serif;
 }
