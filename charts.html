@@ -87,6 +87,53 @@
                         <label for="selectedSensor">Sensor</label>
                         <select id="selectedSensor" class="form-select form-control" aria-label=""></select>
                     </div>
+
+                    <div class="col">
+                        <label for="preset-1">Presets</label>
+                        <button id="preset-1" type="button"
+                                class="btn btn-preset form-control"
+                                onclick="updateDatepicker(1000*60*60, 1); $('#updateButton').click();">
+                            1h
+                        </button>
+                    </div>
+                    <div class="col">
+                        <label for="preset-2">&nbsp;</label>
+                        <button id="preset-2" type="button"
+                                class="btn btn-preset form-control"
+                                onclick="updateDatepicker(1000*60*60*24, 8); $('#updateButton').click();">
+                            1d
+                        </button>
+                    </div>
+                    <div class="col">
+                        <label for="preset-3">&nbsp;</label>
+                        <button id="preset-3" type="button"
+                                class="btn btn-preset form-control"
+                                onclick="updateDatepicker(1000*60*60*24*7, 50); $('#updateButton').click();">
+                            1w
+                        </button>
+                    </div>
+                    <div class="col">
+                        <label for="preset-4">&nbsp;</label>
+                        <button id="preset-4" type="button"
+                                class="btn btn-preset form-control"
+                                onclick="updateDatepicker(1000*60*60*24*30, 200); $('#updateButton').click();">
+                            1mo
+                        </button>
+                    </div>
+                    <div class="col">
+                        <label for="preset-5">&nbsp;</label>
+                        <button id="preset-5" type="button"
+                                class="btn btn-preset form-control"
+                                onclick="updateDatepicker(1000*60*60*24*365, 2400); $('#updateButton').click();">
+                            1y
+                        </button>
+                    </div>
+                </div>
+
+                <hr>
+
+
+                <div class="row">
                     <div class="col col-range">
                         <label for="startRange">Start</label>
                         <input id="startRange" class="form-control" type="datetime-local">
@@ -99,55 +146,10 @@
                         <label for="stepsRange">Step</label>
                         <input id="stepsRange" class="form-control" type="number" value="10" min="1" max="2500">
                     </div>
+
                     <div class="col col-button">
-                        <label for="updateButton">-</label>
+                        <label for="updateButton">&nbsp;</label>
                         <button id="updateButton" type="button" class="btn btn-preset form-control">Load</button>
-                    </div>
-                </div>
-
-                <hr>
-
-
-                <div class="row">
-                    <div class="col">
-                        <label for="preset-1">Presets</label>
-                        <button id="preset-1" type="button"
-                                class="btn btn-preset form-control"
-                                onclick="updateDatepicker(1000*60*60, 1); $('#updateButton').click();">
-                            1h
-                        </button>
-                    </div>
-                    <div class="col">
-                        <label for="preset-2">‎</label>
-                        <button id="preset-2" type="button"
-                                class="btn btn-preset form-control"
-                                onclick="updateDatepicker(1000*60*60*24, 8); $('#updateButton').click();">
-                            1d
-                        </button>
-                    </div>
-                    <div class="col">
-                        <label for="preset-3">‎</label>
-                        <button id="preset-3" type="button"
-                                class="btn btn-preset form-control"
-                                onclick="updateDatepicker(1000*60*60*24*7, 50); $('#updateButton').click();">
-                            1w
-                        </button>
-                    </div>
-                    <div class="col">
-                        <label for="preset-4">‎</label>
-                        <button id="preset-4" type="button"
-                                class="btn btn-preset form-control"
-                                onclick="updateDatepicker(1000*60*60*24*30, 200); $('#updateButton').click();">
-                            1mo
-                        </button>
-                    </div>
-                    <div class="col">
-                        <label for="preset-5">‎</label>
-                        <button id="preset-5" type="button"
-                                class="btn btn-preset form-control"
-                                onclick="updateDatepicker(1000*60*60*24*365, 2400); $('#updateButton').click();">
-                            1y
-                        </button>
                     </div>
                 </div>
                 
