@@ -39,3 +39,9 @@ hr {
     color: #ffffff;
     border-color: #f8f9fa;
 }
+
+
+/* invert calendar icon of the datetime-picker (sadly webkit only right now) */
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
